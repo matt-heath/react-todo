@@ -7,7 +7,7 @@ var TodoList = React.createClass({
     var renderTodos = () => {
       return todos.map((todo) => {
         return (
-          <Todo key={todo.id} {...todo}/> //when iterating over an array and generating multiple instances of a component, they need a unique key prop
+          <Todo key={todo.id} {...todo} onToggle={this.props.onToggle}/> //when iterating over an array and generating multiple instances of a component, they need a unique key prop
           //... Spread operator allows you to 'spread out' all properties within an object and pass them down as props
         );
       });
