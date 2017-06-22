@@ -1,5 +1,6 @@
 var webpack = require('webpack');
 var path = require('path');
+var WebpackNotifierPlugin = require('webpack-notifier');
 
 module.exports = {
   entry: [
@@ -11,6 +12,7 @@ module.exports = {
     jquery: 'jQuery'
   },
   plugins: [
+    new WebpackNotifierPlugin(),
     new webpack.ProvidePlugin({
       '$': 'jquery',
       'jQuery': 'jquery'
@@ -29,6 +31,7 @@ module.exports = {
     ],
     alias: {
       applicationStyles: 'app/styles/app.scss',
+      actions: 'app/actions/actions.jsx'
     },
     extensions: ['', '.js', '.jsx']
   },
