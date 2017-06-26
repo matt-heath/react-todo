@@ -1,24 +1,6 @@
 var $ = require('jquery');
 
 module.exports = {
-  setTodos: function (todos) {
-    if ($.isArray(todos)) {
-      localStorage.setItem('todos', JSON.stringify(todos)); //JSON.stringify takes array and converts to a string
-      return todos;
-    }
-  },
-  getTodos: function () {
-    var stringTodos = localStorage.getItem('todos');
-    var todos = [];
-
-    try {
-      todos = JSON.parse(stringTodos);
-    } catch (e) {
-
-    }
-
-    return $.isArray(todos) ? todos : []
-  },
   filterTodos: function (todos, showCompleted, searchText) {
     var filteredTodos = todos;
 
@@ -32,7 +14,7 @@ module.exports = {
       var text = todo.text.toLowerCase();
       return searchText.length === 0 || text.indexOf(searchText) > -1;
     });
-
+    
     //Sort todos with non-completed first
     filteredTodos.sort((a, b) => {
       if (!a.completed && b.completed){
